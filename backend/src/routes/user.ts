@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
+import { SignupInput,SigninInput } from "@prayag01/common";
 
 export const userRouter = new Hono<{
     Bindings:{
@@ -16,10 +17,14 @@ export const userRouter = new Hono<{
     }).$extends(withAccelerate());
   
     const body = await c.req.json();
-  
+    const {success} = SignupInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({message:"input is not correct"});
+    }
     const user = await prisma.user.create({
       data: {
-        email: body.email,
+        email: body.username,
         password: body.password,
         name: body.name
       },
@@ -47,6 +52,9 @@ export const userRouter = new Hono<{
 
   })
 
+
+
+
   userRouter.post('/signin',async (c)=>{
   
   // this is importent to initialize prisma client
@@ -56,7 +64,11 @@ export const userRouter = new Hono<{
   
     //get body in json format
     const body = await c.req.json();
-  
+    const {success} = SigninInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({message:"input is not correct"});
+    }
     // find user in database 
     const user = await prisma.user.findUnique({
       where:{
@@ -64,14 +76,11 @@ export const userRouter = new Hono<{
         password:body.password
       }
     });
-  
     //if user is not exist
     if(!user){
       c.status(403);
       return c.json({"message":"user is not exist create new user"})
     }
-  
-    //
     const jwt = await sign({id:user.id},c.env.JWT_SECRET);
     return c.json({jwt})
   
