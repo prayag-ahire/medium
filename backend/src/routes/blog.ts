@@ -23,7 +23,7 @@ blogRoutes.use('/*',async(c,next)=>{
       const user = await verify(header ,c.env.JWT_SECRET);
   
     if(user){
-      c.set("userId",user.id);
+      c.set("userId",user.id+"");
       await next();
     }else{
       c.status(403)
@@ -90,7 +90,18 @@ blogRoutes.post('/',async(c)=>{
       datasourceUrl:c.env.DATABASE_URL,
     }).$extends(withAccelerate());
     
-    const post = await prisma.post.findMany();
+    const post = await prisma.post.findMany({
+      select:{
+        content:true,
+        title:true,
+        id:true,
+        author:{
+          select:{
+            name:true
+          }
+        }
+      }
+    });
     return c.json(post);  
   })
   
@@ -105,6 +116,16 @@ blogRoutes.get('/:id',async(c)=>{
       where:{
         id:Number(id)
       },
+      select:{
+        id:true,
+        title:true,
+        content:true,
+        author:{
+          select:{
+            name:true
+          }
+        }
+      }
     });
     return c.json(post);
   })
