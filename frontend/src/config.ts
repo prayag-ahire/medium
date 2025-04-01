@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://backend.prayagahire365.workers.dev"
