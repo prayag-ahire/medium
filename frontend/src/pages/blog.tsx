@@ -1,4 +1,4 @@
-import { BlogPage } from "../components/BlogPage";
+import { BlogPage } from "../components/BlogPage.tsx";
 import { useBlog, } from "../hooks"
 import { useParams } from "react-router-dom";
 
