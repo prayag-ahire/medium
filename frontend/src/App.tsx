@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Design } from './components/Design'
 import { Blogs } from './pages/Blogs'
-import { Blog } from './pages/Blog'
+import { Blog } from './pages/blog.tsx'
 import { Publish } from './pages/Publish'
-import { Login } from './components/Login'
-import { Signup } from './components/SignUp'
+import { Login } from './components/login.tsx'
+import { Signup } from './components/signup.tsx'
 
 function App() {
  
