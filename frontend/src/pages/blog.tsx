@@ -1,5 +1,5 @@
 
-import { BlogPage } from "../components/BlogPages";
+import { BlogPage } from "../components/blogpages.tsx";
 import { useBlog, } from "../hooks"
 import { useParams } from "react-router-dom";
 
