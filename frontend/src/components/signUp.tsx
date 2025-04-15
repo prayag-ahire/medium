@@ -7,9 +7,7 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
 
 export const Signup = ()=>{
-    // const [name,setName] = useState("");
-    // const [email,setEmail] = useState("");
-    // const [pass,setPass] = useState("");
+
 
     const [postInputs,setPostInputs] = useState<SignupInput>({
         name:"",
@@ -29,6 +27,19 @@ export const Signup = ()=>{
         }catch(error){
             
         }
+    }
+
+    interface LabelledInputType{
+        label:string,
+        placeholder:string,
+        type?:string
+        onchange:(e:ChangeEvent<HTMLInputElement>)=> void
+    }
+    const LabelledInput = ({label,placeholder,onchange,type}:LabelledInputType)=>{
+    return <div className="w-1/2">
+    <h2 className="font-bold pt-4">{label}</h2>
+    <Input placeholder={placeholder} type={type} onChange={onchange}></Input>
+    </div>
     }
 
     return(<div className="h-screen w-screen ">
@@ -63,15 +74,3 @@ export const Signup = ()=>{
     </div>)
 }
 
-interface LabelledInputType{
-    label:string,
-    placeholder:string,
-    type?:string
-    onchange:(e:ChangeEvent<HTMLInputElement>)=> void
-}
-const LabelledInput = ({label,placeholder,onchange,type}:LabelledInputType)=>{
-return <div className="w-1/2">
-<h2 className="font-bold pt-4">{label}</h2>
-<Input placeholder={placeholder} type={type} onChange={onchange}></Input>
-</div>
-}

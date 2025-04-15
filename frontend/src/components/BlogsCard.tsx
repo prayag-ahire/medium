@@ -23,7 +23,6 @@ export const BlogsCard = ({
         <div className="text-2xl font-bold">{title}</div>
         <div>{content.slice(0,100)+"..."} </div>
         <div>{`${Math.ceil(content.length / 100)} minutes`}</div>
-        {/* <div className="w-full h-1 bg-slate-300"></div> */}
     </div></Link>)
 }
 
