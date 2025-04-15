@@ -6,7 +6,7 @@ import { Blogs } from './pages/Blogs'
 import { Blog } from './pages/blog.tsx'
 import { Publish } from './pages/Publish'
 import { Login } from './components/login.tsx'
-import { Signup } from './components/signup.tsx'
+import { Signup } from './components/signUp.tsx'
 
 function App() {
  
