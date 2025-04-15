@@ -1,6 +1,6 @@
 
 
-import { BlogPage } from "../components/blogpage";
+import { BlogPage } from "../components/BlogPage";
 import { useBlog, } from "../hooks"
 import { useParams } from "react-router-dom";
 
