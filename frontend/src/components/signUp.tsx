@@ -6,6 +6,20 @@ import { SignupInput } from "@prayag01/common"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 
+interface LabelledInputType{
+    label:string,
+    placeholder:string,
+    type?:string
+    onchange:(e:ChangeEvent<HTMLInputElement>)=> void
+}
+
+const LabelledInput = ({label,placeholder,onchange,type}:LabelledInputType)=>{
+    return <div className="w-1/2">
+        <h2 className="font-bold pt-4">{label}</h2>
+        <Input placeholder={placeholder} type={type} onChange={onchange}></Input>
+    </div>
+}
+
 export const Signup = ()=>{
 
 
@@ -28,19 +42,6 @@ export const Signup = ()=>{
             
         }
     }
-
-    interface LabelledInputType{
-    label:string,
-    placeholder:string,
-    type?:string
-    onchange:(e:ChangeEvent<HTMLInputElement>)=> void
-}
-const LabelledInput = ({label,placeholder,onchange,type}:LabelledInputType)=>{
-return <div className="w-1/2">
-<h2 className="font-bold pt-4">{label}</h2>
-<Input placeholder={placeholder} type={type} onChange={onchange}></Input>
-</div>
-}
 
     return(<div className="h-screen w-screen ">
         {/* {process.env.API_URL} */}

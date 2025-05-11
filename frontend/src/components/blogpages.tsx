@@ -5,7 +5,7 @@ import { Avatar } from "./BlogsCard"
 export const BlogPage = ({blog}:{blog:Blogty})=>{
     return(<div>
         <Appbar/>
-        <div className="grid grid-cols-12 px-10">
+        <div key={blog.id} className="grid grid-cols-12 px-10">
             <div className="col-span-8 pt-10">
                 <div className="text-6xl font-bold mb-2">{blog.title} </div>
                 <div>Posted on August 24,2023</div>

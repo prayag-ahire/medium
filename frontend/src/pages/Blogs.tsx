@@ -12,14 +12,14 @@ export const Blogs = ()=>{
     return (<div>
         <div className="px-5"> <Appbar/></div>
         <div className="flex flex-col items-center justify-center">
-        <div className="max-w-xl">
-            {blogs.map(blog =>  <BlogsCard id={blog.id}
+        <div  className="max-w-xl">
+            {blogs.map(blog =>  <BlogsCard key={blog.id} id={blog.id}
                 autherName={blog.author.name} 
                 title={blog.title} 
                 content={blog.content} 
                 publishDate={"2nd feb 2024"}/>)
                 }
         </div>
-        </div>
+        </div>  
     </div>)
 }

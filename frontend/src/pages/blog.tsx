@@ -15,6 +15,6 @@ export const Blog = ()=>{
         </div>
     }
     return <div>
-        <BlogPage blog={blog}/>
+        <BlogPage key={id} blog={blog}/>
     </div>
 }

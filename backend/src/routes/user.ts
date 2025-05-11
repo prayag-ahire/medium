@@ -83,6 +83,4 @@ export const userRouter = new Hono<{
     }
     const jwt = await sign({id:user.id},c.env.JWT_SECRET);
     return c.json({jwt})
-  
-    
   })
